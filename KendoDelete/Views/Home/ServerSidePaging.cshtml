@@ -1,0 +1,84 @@
+﻿@model KendoDelete.Models.Product
+
+@{
+    ViewBag.Title = "Server Side Paging";
+}
+
+<h2>Products - Server Side Paging Enabled</h2>
+
+@(Html.Kendo().Grid<KendoDelete.Models.Product>().Name("Products").Columns(columns =>
+        {
+            columns.Bound(p => p.Name);
+            columns.Bound(p => p.PerUnit);
+            columns.Bound(p => p.Price).Format("{0:c}");
+            columns.Bound(p => p.Units);
+            columns.Bound(p => p.Level).Title("Order Level");
+            columns.Bound(p => p.Status);
+            columns.Command(command => { command.Edit(); command.Destroy(); }).Width(172);
+            columns.Command(command => command.Custom("ViewDetails").Click("showDetails"));
+            
+        })
+    .DataSource(datasource => datasource
+    .Ajax()
+    .Model(model =>
+         {
+             model.Id(o => o.ID);
+         })
+    .Read(read => read.Action("ServerSidePagingGrid", "Home"))
+    .Update(update => update.Action("EditingInline_Update", "Home"))
+    .Destroy(destroy =>destroy.Action("EditingInline_Destroy", "Home"))
+    .Create(create =>create.Action("Create", "Home"))
+        .PageSize(10)
+    )
+        .Pageable()
+        .Filterable()
+        .Groupable()
+        .Sortable()
+        .Reorderable(reorder => reorder.Columns(true))
+        .Resizable(resize => resize.Columns(true))
+             .Editable(e => e.Mode(GridEditMode.PopUp))
+                 .ToolBar(t => t.Create())
+                 .ToolBar(t => t.Pdf())
+                    .Pdf(pdf => pdf
+                     .FileName("Product Grid in PDF.pdf")
+                     .PaperSize("auto"))
+      
+     )
+
+@(Html.Kendo().Window().Name("Details")
+    .Title("Custom Window")
+    .Visible(false)
+    .Modal(true)
+    .Draggable(true)
+    .Width(300)       
+)
+ 
+
+<script type="text/x-kendo-template" id="template">
+    <div id="details-container">
+       <b> Name: </b> #=Name# <br/>
+       <b>PerUnit:</b> #= PerUnit # <br/>
+       <b> Price:</b> #= Price # <br/>
+       <b> Units:</b> #= Units # <br/>
+       <b> Level:</b> #= Level # <br/>  
+       <div style="float:right;">
+             <button class="k-button" id="yesButton">Yes</button>
+             <button class="k-button" id="noButton"> No</button>            
+       <div>    
+     </div>
+</script>
+
+<script type="text/javascript">
+    var detailsTemplate = kendo.template($("#template").html());
+
+    function showDetails(e) {
+        e.preventDefault();
+                
+        var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+        var wnd = $("#Details").data("kendoWindow");
+
+        wnd.content(detailsTemplate(dataItem));
+        wnd.center().open();
+    }
+</script>
+

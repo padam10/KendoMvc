@@ -1,0 +1,72 @@
+﻿@{
+    ViewBag.Title = "Kendo Demo";
+}
+
+@section featured {
+    <div class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                @*<h1>@ViewBag.Title.</h1>*@
+                @*<h2>@ViewBag.Message</h2>*@
+            </hgroup>
+            <h2> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                Kendo Demo UI Review</h2>
+            <p>
+                Kendo UI is an HTML5, jQuery-based framework for building modern web apps. The framework
+                features lots of UI widgets, a rich data visualization framework, an auto-adaptive mobile
+                 framework, and all the tools needed for HTML5 app development, such as data source, templates,
+                 MVVM, drag-and-drop component, and more.
+            </p>
+            <p>
+                To learn more about Kendo UI visit
+                <a href="http://demos.telerik.com/kendo-ui/" title="Kendo UI Website">http://demos.telerik.com/kendo-ui/</a>.
+                The page features <mark>videos, tutorials, and samples</mark> to help you get the most of Kendo UI components.
+            </p>                        
+            
+        </div>
+    </div>
+    }
+
+<h4>Please Click below to see the feature.</h4>
+<br />
+
+<button type="button" onclick="location.href='@Url.Action("BrowserSidePaging","Home")'" > Browser Side Paging </button>
+<button type="button" onclick="location.href='@Url.Action("ServerSidePaging","Home")'" > Server Side Paging </button>
+<button type="button" onclick="location.href='@Url.Action("Slider","Home")'" > Slider </button>
+<button type="button" onclick="location.href='@Url.Action("Editor","Home")'" > Editor </button>
+@*<h3>Telerik UI for ASP.NET MVC PanelBar</h3>
+<br />*@
+
+@*@(Html.Kendo().PanelBar()
+    .Name("IntroPanelBar")
+    .Items(items =>
+    {
+        items.Add()
+            .Text("Getting Started")
+            .Selected(true)
+            .Expanded(true)
+            .Content(@<text>
+                <p style="padding:0 1em">ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
+                enables a clean separation of concerns and that gives you full control over markup
+                for enjoyable, agile development. ASP.NET MVC includes many features that enable
+                fast, TDD-friendly development for creating sophisticated applications that use
+                the latest web standards.
+                <a href="http://go.microsoft.com/fwlink/?LinkId=245151">Learn more…</a></p>
+            </text>);
+        items.Add()
+            .Text("Add NuGet packages and jump-start your coding")
+            .Content(@<text>
+                <p style="padding:0 1em">NuGet makes it easy to install and update free libraries and tools.
+                <a href="http://go.microsoft.com/fwlink/?LinkId=245153">Learn more…</a></p>
+            </text>);
+        items.Add()
+            .Text("Find Web Hosting")
+            .Content(@<text>
+                <p style="padding:0 1em">You can easily find a web hosting company that offers the right mix of features
+                and price for your applications.
+                <a href="http://go.microsoft.com/fwlink/?LinkId=245157">Learn more…</a></p>
+            </text>);
+    })
+)*@

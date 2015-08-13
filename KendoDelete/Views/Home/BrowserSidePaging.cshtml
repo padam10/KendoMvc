@@ -1,0 +1,127 @@
+﻿@model IEnumerable<KendoDelete.Models.Product>
+
+@{
+    ViewBag.Title = "Browser Side Paging";
+}
+
+<h2>Browser Side Paging </h2>
+
+
+@(Html.Kendo().Grid(Model).Name("Products").Columns(c =>
+{
+    c.Bound(p => p.Name).Title("Items name");
+    c.Bound(p => p.PerUnit);
+    c.Bound(p => p.Price).Format("{0:c}");
+    c.Bound(p => p.Units);
+    c.Bound(p => p.Level).Title("Order Level");
+    c.Bound(p => p.Status);    
+    })
+                    .DataSource(d => d
+                        .Ajax() // make asynchrosus request via Ajax
+                        .ServerOperation(false) // no reason make a round trip to get the data. Data are already in the broswer
+                        )
+                    .Pageable()
+                    .Filterable()
+                    .Groupable()
+                    .Sortable()
+        
+    )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PerUnit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Units)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Level)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PerUnit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Units)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Level)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>*@

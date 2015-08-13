@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "Slider";
+}
+
+<h2>Slider Demo</h2>
+<label id="status"></label>
+@(Html.Kendo().Slider()
+    .Name("slider")
+    .Min(0)
+    .Max(255)
+    .SmallStep(8)
+    .LargeStep(16)
+    .Orientation(SliderOrientation.Vertical)
+    .ShowButtons(false)
+    .TickPlacement(SliderTickPlacement.Both)
+    .Events(e =>e.Slide("onSlide"))
+    )
+
+<script>
+    function onSlide(e) {
+        $("#status").text(e.value);
+    }
+
+</script>

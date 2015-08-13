@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Editor";
+}
+
+<h2>@ViewBag.Message</h2>
+@(Html.Kendo().Editor()
+      .Name("editor")
+      .HtmlAttributes(new { style = "width: 740px;height:440px" })
+     
+      .ImageBrowser(imageBrowser => imageBrowser
+          .Image(@"C:\Books")
+          .Read("Read", "ImageBrowser")
+          .Create("Create", "ImageBrowser")
+          .Destroy("Destroy", "ImageBrowser")
+          .Upload("Upload", "ImageBrowser")
+          .Thumbnail("Thumbnail", "ImageBrowser")
+      )
+      .Value(@<text>
+           <p> You can type anything in here . </p>
+      </text>)
+)
